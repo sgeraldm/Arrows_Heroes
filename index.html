@@ -1,92 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Fund Progress</title>
+
+</head>
+<body style="margin:0">
+
 <div style="
   width:100%;
-  padding:40px 10px;
+  min-height:100vh;
+  padding:30px 10px;
   background:
-    linear-gradient(
-      rgba(0,0,0,0.45),
-      rgba(0,0,0,0.45)
-    ),
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
     url('Heroes.jpg');
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
+  box-sizing:border-box;
 ">
 
 <div style="
-  width:100%;
-  padding:40px 10px;
-  background:url('PASTE_IMAGE_URL_HERE');
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-">
-<div style="
   max-width:360px;
-  margin:20px auto;
-  padding:22px;
+  width:94vw;
+  margin:0 auto;
+  padding:20px;
   background:#0b1f2a;
-  border-radius:22px;
+  border-radius:20px;
   color:#ffffff;
   font-family:Arial,sans-serif;
   text-align:center;
   box-shadow:0 12px 30px rgba(0,0,0,0.35);
 ">
 
-  <h2 style="margin-bottom:4px;color:#36ffd2;">Fund Progress</h2>
+  <h2 style="margin-bottom:4px;color:#36ffd2;font-size:20px;">
+    Fund Progress
+  </h2>
+
   <p style="margin-top:0;font-size:13px;opacity:0.85;">
     Anchored in Fellowship
   </p>
 
   <!-- CIRCLE -->
-  <div style="position:relative;width:220px;height:220px;margin:22px auto;">
-    <svg width="220" height="220">
-      <!-- Background ring -->
-      <circle cx="110" cy="110" r="95"
+  <div style="
+    position:relative;
+    width:180px;
+    height:180px;
+    margin:18px auto;
+  ">
+    <svg width="180" height="180">
+      <circle cx="90" cy="90" r="75"
         stroke="#123848"
-        stroke-width="16"
+        stroke-width="14"
         fill="none" />
 
-      <!-- Progress ring -->
       <circle id="progressRing"
-        cx="110" cy="110" r="95"
+        cx="90" cy="90" r="75"
         stroke="#36ffd2"
-        stroke-width="16"
+        stroke-width="14"
         fill="none"
         stroke-linecap="round"
-        stroke-dasharray="597"
-        stroke-dashoffset="597"
-        transform="rotate(-90 110 110)"
-        style="transition:stroke-dashoffset 1.6s ease;" />
+        stroke-dasharray="471"
+        stroke-dashoffset="471"
+        transform="rotate(-90 90 90)"
+        style="transition:stroke-dashoffset 1.4s ease;" />
     </svg>
 
-    <!-- LOGO CENTER -->
-   <div style="
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    text-align:center;
+    <!-- CENTER -->
+    <div style="
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      text-align:center;
     ">
-  <div style="
-    width:72px;
-    height:72px;
-    background:#ffffff;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin:0 auto 6px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.25);
-    ">
-    <img src="Logo Anchored in FellowSHIP.svg"
-      style="width:48px;height:48px;object-fit:contain;">
-  </div>
+      <div style="
+        width:64px;
+        height:64px;
+        background:#ffffff;
+        border-radius:50%;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        margin:0 auto 6px;
+        box-shadow:0 4px 10px rgba(0,0,0,0.25);
+      ">
+        <img src="Logo Anchored in FellowSHIP.svg"
+          style="width:42px;height:42px;object-fit:contain;">
+      </div>
 
-  <div id="percentText"
-    style="font-size:22px;font-weight:bold;">0%</div>
-  <div style="font-size:12px;opacity:0.8;">Funded</div>
-</div>
-
+      <div id="percentText"
+        style="font-size:20px;font-weight:bold;">0%</div>
+      <div style="font-size:11px;opacity:0.8;">Funded</div>
+    </div>
   </div>
 
   <!-- NUMBERS -->
@@ -109,7 +117,7 @@
     Rp <span id="remainBig"></span> TO GO!
   </div>
 
-  <!-- BCA INFO -->
+  <!-- BANK INFO -->
   <div style="
     margin-top:18px;
     padding:12px;
@@ -124,32 +132,32 @@
   </div>
 
 </div>
+</div>
 
 <script>
-  // ===== CONFIG =====
   var raised = 28008160;
   var goal = 49000000;
 
-  // ===== CALC =====
   var percent = Math.round((raised / goal) * 100);
   var remaining = goal - raised;
-  var circumference = 597;
+
+  var circumference = 471;
   var offset = circumference - (percent / 100) * circumference;
 
-  // ===== FORMAT =====
   function format(num){
     return num.toLocaleString("id-ID");
   }
 
-  // ===== APPLY =====
   document.getElementById("raisedText").innerText = format(raised);
   document.getElementById("goalText").innerText = format(goal);
   document.getElementById("remainText").innerText = format(remaining);
   document.getElementById("remainBig").innerText = format(remaining);
 
-  // Animate ring + number
   setTimeout(function(){
     document.getElementById("progressRing").style.strokeDashoffset = offset;
     document.getElementById("percentText").innerText = percent + "%";
   }, 300);
 </script>
+
+</body>
+</html>
